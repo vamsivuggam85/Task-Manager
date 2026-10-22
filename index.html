@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow | Productivity Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-icon">✓</span> TaskFlow</a>
+    <span class="topbar-label">YOUR DAILY PRODUCTIVITY SPACE</span>
+  </header>
+
+  <main class="app-container">
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">YOUR WORKSPACE</p>
+        <h1>Make today count<span>.</span></h1>
+        <p class="subtitle">Plan your work, focus on what matters, and celebrate progress.</p>
+      </div>
+      <div class="date-card">
+        <span>📅</span>
+        <div><strong id="todayLabel">Today</strong><small>One step at a time</small></div>
+      </div>
+    </section>
+
+    <section class="stats-grid" aria-label="Task statistics">
+      <article class="stat-card"><span class="stat-icon purple">▤</span><p>Total tasks</p><strong id="totalCount">0</strong></article>
+      <article class="stat-card"><span class="stat-icon orange">◷</span><p>In progress</p><strong id="activeCount">0</strong></article>
+      <article class="stat-card"><span class="stat-icon green">✓</span><p>Completed</p><strong id="completedCount">0</strong></article>
+      <article class="stat-card"><span class="stat-icon blue">↗</span><p>Completion rate</p><strong id="completionRate">0%</strong></article>
+    </section>
+
+    <section class="task-panel">
+      <div class="panel-heading">
+        <div><h2 id="formHeading">Add a new task</h2><p>Small tasks lead to big achievements.</p></div>
+        <span class="panel-symbol">✦</span>
+      </div>
+
+      <form id="taskForm">
+        <div class="form-grid">
+          <div class="field task-name-field">
+            <label for="taskTitle">Task name <span>*</span></label>
+            <input id="taskTitle" type="text" placeholder="e.g. Complete Java practice" maxlength="120" required>
+          </div>
+          <div class="field">
+            <label for="taskCategory">Category</label>
+            <select id="taskCategory">
+              <option value="Work">💼 Work</option>
+              <option value="Personal">🏠 Personal</option>
+              <option value="Study">📚 Study</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="taskDueDate">Due date</label>
+            <input id="taskDueDate" type="date">
+          </div>
+        </div>
+        <div class="form-actions">
+          <button id="saveButton" class="button primary" type="submit">＋ Add task</button>
+          <button id="cancelEdit" class="button secondary hidden" type="button">Cancel edit</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="task-list-panel">
+      <div class="list-heading">
+        <div><h2>My tasks <span id="visibleCount" class="count-pill">0</span></h2><p>Keep your priorities moving forward.</p></div>
+        <label class="search-box">⌕ <input id="searchInput" type="search" placeholder="Search tasks..." aria-label="Search tasks"></label>
+      </div>
+
+      <div class="toolbar">
+        <div class="filter-tabs" role="group" aria-label="Filter tasks">
+          <button class="filter-button active" type="button" data-filter="All" aria-pressed="true">All tasks</button>
+          <button class="filter-button" type="button" data-filter="Active" aria-pressed="false">Active</button>
+          <button class="filter-button" type="button" data-filter="Completed" aria-pressed="false">Completed</button>
+        </div>
+        <label class="category-filter">
+          <span class="visually-hidden">Filter by category</span>
+          <select id="categoryFilter">
+            <option value="All">All categories</option>
+            <option value="Work">Work</option>
+            <option value="Personal">Personal</option>
+            <option value="Study">Study</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="taskList" class="task-list" aria-live="polite"></div>
+      <div id="emptyState" class="empty-state">
+        <span class="empty-icon">✦</span>
+        <h3 id="emptyTitle">A fresh start!</h3>
+        <p id="emptyMessage">Add your first task and make today productive.</p>
+      </div>
+      <div class="list-footer">
+        <span id="footerSummary">0 tasks in total</span>
+        <button id="clearCompleted" class="text-button" type="button">Clear completed</button>
+      </div>
+    </section>
+
+    <footer class="app-footer">
+      <p>Made with <span>♥</span> for a more productive day.</p>
+      <p>TaskFlow · HTML, CSS &amp; JavaScript</p>
+    </footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
