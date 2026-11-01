@@ -1,6 +1,4 @@
-
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
-
 :root {
   --bg: #f6f7fb;
   --surface: #ffffff;
@@ -247,9 +245,13 @@ h1 span {
   font-size: 27px;
 }
 
+/* UPDATED: Four-column form layout */
+
 .form-grid {
   display: grid;
-  grid-template-columns: minmax(180px, 2fr) minmax(135px, 1fr) minmax(150px, 1fr);
+  grid-template-columns:
+    minmax(180px, 2fr)
+    repeat(3, minmax(130px, 1fr));
   gap: 15px;
 }
 
@@ -281,8 +283,22 @@ h1 span {
   color: #a1a6b7;
 }
 
+/* NEW: Reminder helper text */
+
+.field-hint {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* UPDATED: Form buttons */
+
 .form-actions {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 9px;
   margin-top: 19px;
 }
@@ -312,6 +328,29 @@ h1 span {
 .secondary {
   color: var(--text);
   background: #eff0f7;
+}
+
+.secondary:hover {
+  color: var(--primary);
+  background: var(--soft-purple);
+}
+
+/* NEW: Notification button */
+
+#enableNotifications {
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+#enableNotifications:hover {
+  color: var(--primary);
+  background: var(--soft-purple);
+  border-color: #d5d0ff;
+}
+
+#enableNotifications:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
 }
 
 .hidden {
@@ -429,6 +468,7 @@ h1 span {
     opacity: 0;
     transform: translateY(5px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -646,6 +686,8 @@ h1 span {
   border: 0;
 }
 
+/* Tablet responsive design */
+
 @media (max-width: 760px) {
   .app-container {
     margin-top: 25px;
@@ -671,6 +713,8 @@ h1 span {
     padding: 10px;
   }
 }
+
+/* Mobile responsive design */
 
 @media (max-width: 520px) {
   .topbar {
@@ -709,6 +753,15 @@ h1 span {
 
   .task-name-field {
     grid-column: auto;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-actions .button {
+    width: 100%;
   }
 
   .list-heading {
